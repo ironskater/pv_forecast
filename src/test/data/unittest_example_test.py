@@ -1,4 +1,4 @@
-import main.data.unittest_example as ut
+import data.unittest_example as ut
 
 def testIncrement_Normal():
     assert ut.increment(3) == 4
