@@ -1,9 +1,11 @@
-.PHONY: env clean test
+.PHONY: env clean test multivariate_cnn
 
 CONDA_ENV_YML := environment.yml
 ENV_NAME := $(shell cat $(CONDA_ENV_YML) | grep name: | cut -d":" -f 2 | tr -d ' ')
 PROJ_ROOT := $(abspath .)
 PYTHONPATH := $(PROJ_ROOT)/src/main
+
+export PROJ_ROOT
 
 env:
 ifeq ($(shell conda env list| grep -w $(ENV_NAME)),)
@@ -21,25 +23,9 @@ endif
 	# @if [ ! -f "dev.env" ]; then echo PYTHONPATH=$(PYTHONPATH) > dev.env;fi
 	@echo PYTHONPATH=$(PYTHONPATH) > dev.env;
 
-merge_data:
-	@echo merge stage...
-
-clean_data: merge_data
-	@echo clean stage...
-
-aggregate_data: clean_data
-	@echo aggregate stage...
-
-src/main/data/train_data.py:
-	@python $(PROJ_ROOT)/src/main/data/train_data.py
-
-# src/main/model/multivariate_cnn.py: data/train_data src/main/model/hyperparam/multivariate_cnn.ini
-# 	@echo start training...
-# 	@python $(PROJ_ROOT)/src/main/model/multivariate_cnn.py
-
-report/multivariate_cnn: data/train_data src/main/model/hyperparam/multivariate_cnn.ini
-	@echo start training...
-	@python $(PROJ_ROOT)/src/main/model/multivariate_cnn.py
+multivariate_cnn:
+	@echo Starting multivariate_cnn pipeline...........
+	@$(MAKE) -C pipeline_config/multivariate_cnn -f Makefile $(target)
 
 test:
 	@pytest --verbosity=2 --rootdir=$(PROJ_ROOT)/src/test
