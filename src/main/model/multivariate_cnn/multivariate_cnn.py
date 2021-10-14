@@ -75,7 +75,7 @@ if __name__ == '__main__':
     write_metrics(  model_name,
                     ','.join(str(round(element, 2)) for element in np.random.rand(4)),
                     os.path.join(   sys.argv[4],
-                                    'multivariate_cnn_metrics'))
+                                    'metrics'))
 
     # write_to_file(model)
     model.summary()

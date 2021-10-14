@@ -24,7 +24,6 @@ endif
 	@echo PYTHONPATH=$(PYTHONPATH) > dev.env;
 
 multivariate_cnn:
-	@echo Starting multivariate_cnn pipeline...........
 	@$(MAKE) -C pipeline_config/multivariate_cnn -f Makefile $(target)
 
 test:
