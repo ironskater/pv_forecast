@@ -66,7 +66,8 @@ if __name__ == '__main__':
     now_dt = datetime.now()
     model_name = 'multivariate_cnn_' + now_dt.strftime('%Y%m%d%H%M%S')
     model = create_model(model_name)
-    model.save(os.path.join(sys.argv[3], model_name + '.h5'))
+    model.save(os.path.join(sys.argv[3],
+                            model_name + '.h5'))
 
     # fit model
 

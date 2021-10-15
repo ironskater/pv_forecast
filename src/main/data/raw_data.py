@@ -16,6 +16,7 @@ if __name__ == '__main__':
 
     with open(output_dir, 'w') as f:
         f.write(config['raw_data']['start_dt'] + ',')
-        f.write(config['raw_data']['end_dt'] + '\n')
+        f.write(config['raw_data']['end_dt'] + ',')
+        f.write(config['raw_data']['site_id'] + '\n')
 
     print('============================================================')
