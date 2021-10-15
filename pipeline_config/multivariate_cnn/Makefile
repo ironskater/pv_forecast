@@ -1,5 +1,6 @@
-all:$(PROJ_ROOT)/data/multivariate_cnn/training_data
+all: train
 
+train:$(PROJ_ROOT)/data/multivariate_cnn/training_data
 	@python $(PROJ_ROOT)/src/main/model/multivariate_cnn/multivariate_cnn.py \
 		$(PROJ_ROOT)/pipeline_config/multivariate_cnn/hyperparam.ini \
 		$(PROJ_ROOT)/data/multivariate_cnn/training_data \
