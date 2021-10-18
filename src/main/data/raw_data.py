@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     output_dir = os.path.join(sys.argv[2], 'raw_data')
 
-    with open(output_dir, 'w') as f:
+    with open(output_dir, 'a') as f:
         f.write(config['raw_data']['start_dt'] + ',')
         f.write(config['raw_data']['end_dt'] + ',')
         f.write(config['raw_data']['site_id'] + '\n')

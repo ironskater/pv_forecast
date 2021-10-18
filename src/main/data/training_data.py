@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     output_dir = os.path.join(sys.argv[3], 'training_data')
 
-    with open(output_dir, 'w') as f:
+    with open(output_dir, 'a') as f:
         f.write(config['training_data']['time_step'] + ',')
         f.write(config['training_data']['normalization_method'] + '\n')
 

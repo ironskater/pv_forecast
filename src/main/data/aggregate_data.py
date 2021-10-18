@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     output_dir = os.path.join(sys.argv[3], 'aggregate_data')
 
-    with open(output_dir, 'w') as f:
+    with open(output_dir, 'a') as f:
         f.write(config['aggregate_data']['resample_rule'] + '\n')
 
     print('============================================================')

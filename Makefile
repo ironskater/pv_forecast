@@ -4,6 +4,7 @@ CONDA_ENV_YML := environment.yml
 ENV_NAME := $(shell cat $(CONDA_ENV_YML) | grep name: | cut -d":" -f 2 | tr -d ' ')
 PROJ_ROOT := $(abspath .)
 PYTHONPATH := $(PROJ_ROOT)/src/main
+target := train
 
 export PROJ_ROOT
 
@@ -20,11 +21,14 @@ else
 		echo "Nothing to be updated"; \
 	fi
 endif
-	# @if [ ! -f "dev.env" ]; then echo PYTHONPATH=$(PYTHONPATH) > dev.env;fi
+# @if [ ! -f "dev.env" ]; then echo PYTHONPATH=$(PYTHONPATH) > dev.env;fi
 	@echo PYTHONPATH=$(PYTHONPATH) > dev.env;
 
 multivariate_cnn:
-	@$(MAKE) -C pipeline_config/multivariate_cnn -f Makefile $(target)
+	@python src/main/pipeline_manager.py \
+		$@ \
+		$(PROJ_ROOT)/pipeline_config/multivariate_cnn \
+		$(target)
 
 test:
 	@pytest --verbosity=2 --rootdir=$(PROJ_ROOT)/src/test
