@@ -3,7 +3,6 @@ import sys
 import tensorflow as tf
 import os
 import numpy as np
-from contextlib import redirect_stdout
 from datetime import datetime
 from pathlib import Path
 

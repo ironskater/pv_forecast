@@ -10,7 +10,8 @@ if __name__ == '__main__':
 
     print('do raw_data ..............................................')
 
-    Path(sys.argv[2]).mkdir(parents=True, exist_ok=True)
+    Path(sys.argv[2]).mkdir(parents=True,
+                            exist_ok=True)
 
     output_dir = os.path.join(sys.argv[2], 'raw_data')
 
